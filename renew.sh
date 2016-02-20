@@ -10,11 +10,12 @@ if [ -d src ]; then
 	git fetch --all
 	git reset --hard origin/master
 else
-	git clone https://github.com/letsencrypt/letsencrypt src
+	echo 2
+	git git submodule update --init --recursive
 fi
 
 # exec let's encrypt renew
-exec ./letsencrypt-auto certonly renew
+exec ./letsencrypt-auto renew
 
 echo 'See you later alligator!'
 exit
