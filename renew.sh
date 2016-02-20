@@ -15,8 +15,12 @@ else
 	echo 3
 fi
 
-# exec let's encrypt renew
-exec ./letsencrypt-auto renew
+# exec let's encrypt renew and check if there were errors
+if ! ./letsencrypt-auto renew > /var/log/letsencrypt/renew.log 2>&1 ; then
+    echo Something terrible happened:
+    cat /var/log/letsencrypt/renew.log
+    exit 1
+fi
 
 echo 'See you later alligator!'
 exit
