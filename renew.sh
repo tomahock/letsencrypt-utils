@@ -11,7 +11,8 @@ if [ -d src ]; then
 	git reset --hard origin/master
 else
 	echo 2
-	git git submodule update --init --recursive
+	git submodule update --init --recursive
+	echo 3
 fi
 
 # exec let's encrypt renew
